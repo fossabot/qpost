@@ -1,12 +1,12 @@
-RewriteEngine On
+# Uncomment the following to prevent the httpoxy vulnerability
+# See: https://httpoxy.org/
+#<IfModule mod_headers.c>
+#    RequestHeader unset Proxy
+#</IfModule>
 
-RewriteCond %{REQUEST_URI} !(\.css|\.js|\.xml|\.png|\.jpg|\.svg|\.webmanifest|\.ico|\.gif|robots\.txt)$ [NC]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php?params=$1 [L,QSA]
-
-# re-add Authorization header
-RewriteCond %{HTTP:Authorization} ^(.*)
-RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
-
-Options -Indexes
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteRule    ^(\.well-known/.*)$ $1 [L]
+    RewriteRule    ^$    webroot/    [L]
+    RewriteRule    (.*) webroot/$1    [L]
+</IfModule>

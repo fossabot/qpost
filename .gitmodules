@@ -1,3 +1,0 @@
-[submodule "MailTemplates"]
-	path = src/Mail/Templates
-	url = https://gitlab.com/Gigadrive/MailTemplates.git
