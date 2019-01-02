@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "es6",
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "outDir": "./webroot/js/",
+        "rootDir": "./assets/typescript/",
+        "sourceMap": false
+    },
+    "files": [
+        "./assets/typescript/qpost.ts"
+    ]
+}

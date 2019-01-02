@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "timeago.js": "^3.0.2",
+    "typescript": "^3.2.2"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.3.29"
+  },
+  "scripts": {
+      "build": "tsc"
+  }
+}
