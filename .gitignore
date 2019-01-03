@@ -6,6 +6,10 @@
 /tmp/*
 /vendor/*
 
+## compiled
+/webroot/js/*
+/webroot/css/*
+
 # OS generated files #
 ######################
 .DS_Store

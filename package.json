@@ -7,6 +7,6 @@
     "@types/jquery": "^3.3.29"
   },
   "scripts": {
-      "build": "tsc"
+      "build": "tsc && lessc assets/less/qpost.less webroot/css/qpost.css"
   }
 }
