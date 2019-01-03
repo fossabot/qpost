@@ -33,7 +33,7 @@ deploy:
     - chmod 700 ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
-    - git submodule update --depth 50
+    - ./build.sh
     - composer install --no-dev
     - rsync -avze ssh --exclude=tmp --exclude=config/app.php --exclude=.git --exclude=logs ./ ssh-gigadrivegroup@zeryther.lima-ssh.de:~/html/qpost/
     - rsync -avze ssh --exclude=tmp --exclude=config/app.php --exclude=.git --exclude=logs ./ root@ssh.gigadrivegroup.com:/home/web/qpost/
