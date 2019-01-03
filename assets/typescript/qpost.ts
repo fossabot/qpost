@@ -11,4 +11,5 @@
  * @license   https://opensource.org/licenses/GPL-3.0 GNU GENERAL PUBLIC LICENSE
  */
 
+require("jquery");
 require("bootstrap");
