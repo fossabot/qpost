@@ -1,16 +1,15 @@
 <?php
 /**
- * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * qpost (https://qpost.gigadrivegroup.com)
+ * Copyright (c) Gigadrive Group (https://gigadrivegroup.com)
  *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice
+ * Licensed under The GNUv3 License
+ * For full copyright and license information, please see the LICENSE file
+ * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @since         3.3.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright Copyright (c) Gigadrive Group (https://gigadrivegroup.com)
+ * @link      https://qpost.gigadrivegroup.com qpost
+ * @license   https://opensource.org/licenses/GPL-3.0 GNU GENERAL PUBLIC LICENSE
  */
 namespace qpost\Test\TestCase;
 
@@ -25,16 +24,13 @@ use InvalidArgumentException;
 /**
  * ApplicationTest class
  */
-class ApplicationTest extends IntegrationTestCase
-{
-
+class ApplicationTest extends IntegrationTestCase {
     /**
      * testBootstrap
      *
      * @return void
      */
-    public function testBootstrap()
-    {
+    public function testBootstrap(){
         $app = new Application(dirname(dirname(__DIR__)) . '/config');
         $app->bootstrap();
         $plugins = $app->getPlugins();
@@ -50,8 +46,7 @@ class ApplicationTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testBootstrapPluginWitoutHalt()
-    {
+    public function testBootstrapPluginWitoutHalt(){
         $this->expectException(InvalidArgumentException::class);
 
         $app = $this->getMockBuilder(Application::class)
@@ -70,8 +65,7 @@ class ApplicationTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testMiddleware()
-    {
+    public function testMiddleware(){
         $app = new Application(dirname(dirname(__DIR__)) . '/config');
         $middleware = new MiddlewareQueue();
 

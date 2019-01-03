@@ -27,6 +27,7 @@ deploy:
     - 'which php7-mbstring || apk add php7-mbstring'
     - 'which composer || apk add composer'
     - 'which npm || apk add npm'
+    - 'which gulp || apk add gulp'
     - eval $(ssh-agent -s)
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh

@@ -1,16 +1,15 @@
 <?php
 /**
- * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * qpost (https://qpost.gigadrivegroup.com)
+ * Copyright (c) Gigadrive Group (https://gigadrivegroup.com)
  *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
+ * Licensed under The GNUv3 License
+ * For full copyright and license information, please see the LICENSE file
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @since         3.3.4
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright Copyright (c) Gigadrive Group (https://gigadrivegroup.com)
+ * @link      https://qpost.gigadrivegroup.com qpost
+ * @license   https://opensource.org/licenses/GPL-3.0 GNU GENERAL PUBLIC LICENSE
  */
 namespace qpost\Controller;
 
@@ -21,15 +20,13 @@ use Cake\Event\Event;
  *
  * Controller used by ExceptionRenderer to render error responses.
  */
-class ErrorController extends AppController
-{
+class ErrorController extends AppController {
     /**
      * Initialization hook method.
      *
      * @return void
      */
-    public function initialize()
-    {
+    public function initialize(){
         $this->loadComponent('RequestHandler', [
             'enableBeforeRedirect' => false,
         ]);
@@ -41,8 +38,8 @@ class ErrorController extends AppController
      * @param \Cake\Event\Event $event Event.
      * @return \Cake\Http\Response|null|void
      */
-    public function beforeFilter(Event $event)
-    {
+    public function beforeFilter(Event $event){
+
     }
 
     /**
@@ -51,8 +48,7 @@ class ErrorController extends AppController
      * @param \Cake\Event\Event $event Event.
      * @return \Cake\Http\Response|null|void
      */
-    public function beforeRender(Event $event)
-    {
+    public function beforeRender(Event $event){
         parent::beforeRender($event);
 
         $this->viewBuilder()->setTemplatePath('Error');
@@ -64,7 +60,7 @@ class ErrorController extends AppController
      * @param \Cake\Event\Event $event Event.
      * @return \Cake\Http\Response|null|void
      */
-    public function afterFilter(Event $event)
-    {
+    public function afterFilter(Event $event){
+
     }
 }

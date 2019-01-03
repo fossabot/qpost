@@ -49,7 +49,6 @@
         }
     },
     "scripts": {
-        "pre-install-cmd": "npm install && npm run build",
         "post-install-cmd": "qpost\\Console\\Installer::postInstall",
         "post-create-project-cmd": "qpost\\Console\\Installer::postInstall",
         "post-autoload-dump": "Cake\\Composer\\Installer\\PluginInstaller::postAutoloadDump",

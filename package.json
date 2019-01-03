@@ -1,12 +1,26 @@
 {
   "dependencies": {
-    "timeago.js": "^3.0.2",
+    "@types/gulp": "^4.0.5",
+    "@types/gulp-less": "0.0.31",
+    "@types/jquery": "^3.3.29",
+    "@types/jquery.timeago": "^1.0.29",
+    "@types/popper.js": "^1.11.0",
+    "bootstrap": "^4.2.1",
+    "bootstrap-sass": "^3.4.0",
+    "jquery": "^3.3.1",
+    "less": "^3.9.0",
+    "popper.js": "^1.14.6",
     "typescript": "^3.2.2"
   },
   "devDependencies": {
-    "@types/jquery": "^3.3.29"
-  },
-  "scripts": {
-      "build": "tsc && lessc assets/less/qpost.less webroot/css/qpost.css"
+    "@types/node": "^10.12.18",
+    "del": "^3.0.0",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-csso": "^3.0.1",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.1",
+    "run-sequence": "^2.2.1"
   }
 }

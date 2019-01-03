@@ -1,16 +1,15 @@
 <?php
 /**
- * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * qpost (https://qpost.gigadrivegroup.com)
+ * Copyright (c) Gigadrive Group (https://gigadrivegroup.com)
  *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
+ * Licensed under The GNUv3 License
+ * For full copyright and license information, please see the LICENSE file
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link      https://cakephp.org CakePHP(tm) Project
- * @since     3.0.0
- * @license   https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright Copyright (c) Gigadrive Group (https://gigadrivegroup.com)
+ * @link      https://qpost.gigadrivegroup.com qpost
+ * @license   https://opensource.org/licenses/GPL-3.0 GNU GENERAL PUBLIC LICENSE
  */
 namespace qpost\Shell;
 
@@ -22,16 +21,13 @@ use Psy\Shell as PsyShell;
 /**
  * Simple console wrapper around Psy\Shell.
  */
-class ConsoleShell extends Shell
-{
-
+class ConsoleShell extends Shell {
     /**
      * Start the shell and interactive console.
      *
      * @return int|null
      */
-    public function main()
-    {
+    public function main(){
         if (!class_exists('Psy\Shell')) {
             $this->err('<error>Unable to load Psy\Shell.</error>');
             $this->err('');
@@ -64,8 +60,7 @@ class ConsoleShell extends Shell
      *
      * @return \Cake\Console\ConsoleOptionParser
      */
-    public function getOptionParser()
-    {
+    public function getOptionParser(){
         $parser = new ConsoleOptionParser('console');
         $parser->setDescription(
             'This shell provides a REPL that you can use to interact with ' .
