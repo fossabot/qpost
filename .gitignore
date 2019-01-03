@@ -9,6 +9,7 @@
 ## compiled
 /webroot/js/*
 /webroot/css/*
+/webroot/bundle
 
 # OS generated files #
 ######################
