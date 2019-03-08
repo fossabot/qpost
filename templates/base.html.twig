@@ -1,8 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>{% block title %}Welcome!{% endblock %}</title>
+	<title>
+		{% if title is defined and title %}
+			{{ title }} - qpost
+		{% else %}
+			qpost - social microblogging network
+		{% endif %}
+	</title>
+
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+
+	<meta name="description"
+		  content="{% if description is defined and description %}{{ description }}{% else %}qpost is a social microblogging network by Gigadrive that helps you share your thoughts online, protected by freedom of speech.{% endif %}"/>
+	<meta name="keywords" content="social,network,posts,profiles,pictures,bio,gigadrive"/>
+
+	<meta name="og:site_name" content="qpost"/>
+	<meta name="og:title"
+		  content="{% if title is defined and title %}{{ title }} - qpost{% else %}qpost - social microblogging network{% endif %}"/>
+	<meta name="og:description"
+		  content="{% if description is defined and description %}{{ description }}{% else %}qpost is a social microblogging network by Gigadrive that helps you share your thoughts online, protected by freedom of speech.{% endif %}"/>
+
+	<meta name="twitter:title"
+		  content="{% if title is defined and title %}{{ title }} - qpost{% else %}qpost - social microblogging network{% endif %}"/>
+	<meta name="twitter:description"
+		  content="{% if description is defined and description %}{{ description }}{% else %}qpost is a social microblogging network by Gigadrive that helps you share your thoughts online, protected by freedom of speech.{% endif %}"/>
+	<meta name="twitter:card" content="summary"/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+	<link rel="icon" type="image/png" sizes="16x16" hre="/favicon-16x16.png"/>
+	<link rel="manifest" href="/site.webmanifest"/>
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#007bff"/>
+
+	<meta name="apple-mobile-web-app-title" content="qpost"/>
+	<meta name="application-name" content="qpost"/>
+	<meta name="msapplication-TileColor" content="#007bff"/>
+	<meta name="theme-color" content="#007bff"/>
+
 	{% block stylesheets %}{% endblock %}
 </head>
 <body>
