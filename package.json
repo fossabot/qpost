@@ -1,0 +1,44 @@
+{
+	"name": "qpost",
+	"version": "1.0.0",
+	"scripts": {
+		"build": "npm run clean && webpack --config=webpack.prod.js",
+		"watch": "npm run clean && webpack --config=webpack.dev.js",
+		"clean": "node clean.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://gitlab.com/Zeryther/qpost.git"
+	},
+	"author": "Gigadrive",
+	"license": "GPL-3.0",
+	"bugs": {
+		"url": "https://gitlab.com/Zeryther/qpost/issues"
+	},
+	"homepage": "https://qpo.st",
+	"dependencies": {
+		"@types/bootstrap": "^4.3.0",
+		"@types/jquery": "^3.3.29",
+		"@types/jquery.timeago": "^1.0.29",
+		"bootstrap": "^4.3.1",
+		"jquery": "^3.3.1",
+		"popper.js": "^1.14.7",
+		"ts-loader": "^5.3.3",
+		"typescript": "^3.3.3333"
+	},
+	"devDependencies": {
+		"@types/node": "^11.10.5",
+		"css-loader": "^2.1.1",
+		"del": "^4.0.0",
+		"file-loader": "^3.0.1",
+		"less-loader": "^4.1.0",
+		"node-sass": "^4.11.0",
+		"run-sequence": "^2.2.1",
+		"sass-loader": "^7.1.0",
+		"style-loader": "^0.23.1",
+		"url-loader": "^1.1.2",
+		"webpack": "^4.29.6",
+		"webpack-cli": "^3.2.3",
+		"webpack-merge": "^4.2.1"
+	}
+}

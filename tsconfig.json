@@ -1,0 +1,48 @@
+{
+	"compilerOptions": {
+		//"baseUrl": ".",
+		"outDir": "web/js",
+		"module": "esnext",
+		"target": "es5",
+		"lib": [
+			"es6",
+			"dom"
+		],
+		"sourceMap": true,
+		"allowJs": true,
+		"moduleResolution": "node",
+		"rootDir": "assets/ts",
+		"forceConsistentCasingInFileNames": true,
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
+		"noImplicitAny": false,
+		"importHelpers": true,
+		"strictNullChecks": true,
+		"suppressImplicitAnyIndexErrors": true,
+		"noUnusedLocals": true,
+		"allowSyntheticDefaultImports": true
+	},
+	"exclude": [
+		"node_modules",
+		"build",
+		"scripts",
+		"acceptance-tests",
+		"webpack",
+		"jest",
+		"src/setupTests.ts",
+		"webpack.config.js",
+		"tsconfig.json",
+		"config",
+		"public",
+		"express.js",
+		"clean.js",
+		"vendor",
+		"src/Gigadrive/WebsiteBundle/Resources/public/build/bundle.js",
+		"src/Gigadrive/WebsiteBundle/Resources/public/assets/js-outdated",
+		"web",
+		"tsconfig.json",
+		"webpack.common.js",
+		"webpack.dev.js",
+		"webpack.prod.js"
+	]
+}
