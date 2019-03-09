@@ -15,14 +15,23 @@
  * along with this program. If not, see <https://gnu.org/licenses/>
  */
 
-@import "~bootstrap/scss/bootstrap";
-@import "nightmode/index";
-@import "alerts";
-@import "base";
-@import "emoji";
-@import "feed";
-@import "forms";
-@import "navigation";
-@import "post-forms";
-@import "profile";
-@import "util";
+html.nightMode, html.nightMode > body {
+	background: #474747;
+	color: #FFF;
+
+	@import "base";
+	@import "buttons";
+	@import "cards";
+	@import "feed";
+	@import "footer";
+	@import "forms";
+	@import "list-group";
+	@import "modals";
+	@import "navigation";
+	@import "pagination";
+	@import "pagination";
+	@import "post-forms";
+	@import "profile";
+	@import "tables";
+	@import "text";
+}

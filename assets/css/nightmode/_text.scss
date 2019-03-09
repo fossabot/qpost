@@ -15,14 +15,10 @@
  * along with this program. If not, see <https://gnu.org/licenses/>
  */
 
-@import "~bootstrap/scss/bootstrap";
-@import "nightmode/index";
-@import "alerts";
-@import "base";
-@import "emoji";
-@import "feed";
-@import "forms";
-@import "navigation";
-@import "post-forms";
-@import "profile";
-@import "util";
+h1, h2, h3, h4, h5, h6 {
+	color: #FFF !important;
+}
+
+.text-muted {
+	color: #8e8f91 !important;
+}

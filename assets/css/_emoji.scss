@@ -15,14 +15,9 @@
  * along with this program. If not, see <https://gnu.org/licenses/>
  */
 
-@import "~bootstrap/scss/bootstrap";
-@import "nightmode/index";
-@import "alerts";
-@import "base";
-@import "emoji";
-@import "feed";
-@import "forms";
-@import "navigation";
-@import "post-forms";
-@import "profile";
-@import "util";
+img.emoji {
+	height: 1em;
+	width: 1em;
+	margin: 0 .05em 0 .1em;
+	vertical-align: -0.1em;
+}

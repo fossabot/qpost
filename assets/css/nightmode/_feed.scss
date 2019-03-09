@@ -15,14 +15,22 @@
  * along with this program. If not, see <https://gnu.org/licenses/>
  */
 
-@import "~bootstrap/scss/bootstrap";
-@import "nightmode/index";
-@import "alerts";
-@import "base";
-@import "emoji";
-@import "feed";
-@import "forms";
-@import "navigation";
-@import "post-forms";
-@import "profile";
-@import "util";
+.statusTrigger {
+	cursor: pointer;
+	-webkit-transition: background-color 200ms linear;
+	-ms-transition: background-color 200ms linear;
+	transition: background-color 200ms linear;
+}
+
+.statusTrigger:hover {
+	background-color: #2b2b2b;
+	-webkit-transition: background-color 200ms linear;
+	-ms-transition: background-color 200ms linear;
+	transition: background-color 200ms linear;
+}
+
+.homeFeedLoadMore {
+	background: #383838 !important;
+	border-color: #000 !important;
+	color: white;
+}

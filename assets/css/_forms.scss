@@ -15,14 +15,25 @@
  * along with this program. If not, see <https://gnu.org/licenses/>
  */
 
-@import "~bootstrap/scss/bootstrap";
-@import "nightmode/index";
-@import "alerts";
-@import "base";
-@import "emoji";
-@import "feed";
-@import "forms";
-@import "navigation";
-@import "post-forms";
-@import "profile";
-@import "util";
+.custom-select {
+	height: auto !important;
+	padding: .6rem .8rem !important;
+	border: 2px solid #ced4da !important;
+	transition: none !important;
+}
+
+.btn.focus, .btn:focus {
+	box-shadow: none !important;
+}
+
+.datepicker-panel > ul > li:hover,
+.datepicker-panel > ul[data-view="week"] > li:hover {
+	background-color: #0D0D0D;
+}
+
+.form-control:disabled {
+	border: 1px solid #222222;
+	background-color: #535353;
+	color: #d1d1d1 !important;
+	box-shadow: none;
+}

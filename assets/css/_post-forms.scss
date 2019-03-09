@@ -15,14 +15,58 @@
  * along with this program. If not, see <https://gnu.org/licenses/>
  */
 
-@import "~bootstrap/scss/bootstrap";
-@import "nightmode/index";
-@import "alerts";
-@import "base";
-@import "emoji";
-@import "feed";
-@import "forms";
-@import "navigation";
-@import "post-forms";
-@import "profile";
-@import "util";
+.replyForm {
+	margin-top: 60px !important;
+}
+
+.postField {
+	height: 100px;
+	resize: none !important;
+}
+
+.postField,
+.postField:focus {
+	border: none !important;
+	box-shadow: none !important;
+}
+
+i.addElementIcon {
+	font-size: 27px;
+	margin-right: 5px;
+	float: left;
+}
+
+.addElementGroup {
+	height: 29px;
+}
+
+.addElementText {
+	float: left;
+	margin-top: 3px;
+}
+
+.addElementGroupContainer {
+	margin-bottom: 7px;
+}
+
+.addElementGroupContainer:last-of-type {
+	margin-bottom: 0px;
+}
+
+.hwt-container {
+	border-top: 1px solid #ced4da;
+	border-bottom: 1px solid #ced4da;
+	padding: 10px;
+}
+
+.hwt-content {
+	padding: 10px;
+}
+
+.hwt-backdrop {
+	right: -100px !important;
+}
+
+.hwt-content mark {
+	background-color: #FF4F4F;
+}

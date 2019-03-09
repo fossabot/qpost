@@ -15,14 +15,14 @@
  * along with this program. If not, see <https://gnu.org/licenses/>
  */
 
-@import "~bootstrap/scss/bootstrap";
-@import "nightmode/index";
-@import "alerts";
-@import "base";
-@import "emoji";
-@import "feed";
-@import "forms";
-@import "navigation";
-@import "post-forms";
-@import "profile";
-@import "util";
+.list-group-item {
+	background-color: #383838;
+	border-color: #242526;
+}
+
+a.list-group-item:hover,
+a.list-group-item:active,
+a.list-group-item:focus {
+	background-color: #2e2d2d;
+	border-color: #242526;
+}

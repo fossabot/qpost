@@ -15,8 +15,10 @@
  * along with this program. If not, see <https://gnu.org/licenses/>
  */
 
-var {resolve} = require("path");
-var glob = require("glob");
+const {resolve} = require("path");
+const glob = require("glob");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const optimizeCss = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
 	//entry: () => glob.sync("./src/Gigadrive/WebsiteBundle/Resources/public/assets/**/{index.ts,index.scss}"),
@@ -76,6 +78,23 @@ module.exports = {
 			}
 		]
 	},
+	optimization: {
+		minimizer: [
+			new UglifyJsPlugin({
+				extractComments: "all"
+			})
+		]
+	},
+	plugins: [
+		new optimizeCss({
+			cssProcessorOptions: {
+				safe: true,
+				discardComments: {
+					removeAll: true,
+				},
+			}
+		})
+	],
 	resolve: {
 		extensions: [".tsx", ".ts", ".js", ".jsx"]
 	},
