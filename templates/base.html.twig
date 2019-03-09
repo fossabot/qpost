@@ -45,6 +45,9 @@
 </head>
 <body>
 {% block body %}{% endblock %}
-{% block javascripts %}{% endblock %}
+
+{% block javascripts %}
+	<script src="/build/bundle.js" type="text/javascript"></script>
+{% endblock %}
 </body>
 </html>
