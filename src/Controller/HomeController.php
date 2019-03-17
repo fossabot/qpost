@@ -16,7 +16,7 @@
  * along with this program. If not, see <https://gnu.org/licenses/>
  */
 
-namespace App\Controller;
+namespace qpost\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;

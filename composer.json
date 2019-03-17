@@ -41,12 +41,12 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"App\\": "src/"
+			"qpost\\": "src/"
 		}
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"App\\Tests\\": "tests/"
+			"qpost\\Tests\\": "tests/"
 		}
 	},
 	"replace": {

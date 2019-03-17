@@ -16,7 +16,7 @@
  * along with this program. If not, see <https://gnu.org/licenses/>
  */
 
-namespace App\Entity;
+namespace qpost\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

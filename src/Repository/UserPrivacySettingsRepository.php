@@ -16,7 +16,7 @@
  * along with this program. If not, see <https://gnu.org/licenses/>
  */
 
-namespace App\Repository;
+namespace qpost\Repository;
 
 use App\Entity\UserPrivacySettings;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
