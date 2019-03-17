@@ -1,5 +1,24 @@
-{% extends "filledBase.html.twig" %}
+{% extends "homeBase.html.twig" %}
 
 {% block content %}
-	asd
+	<img src="{{ asset("img/qpost-blue-tiny.png") }}" class="homeLogo" alt="qpost Logo" title="qpost Logo"/>
+
+	<p class="homeDescriptionText">
+		A social microblogging network by Gigadrive that helps you share your thoughts online, protected by freedom of
+		speech.
+	</p>
+
+	<div class="homeRegisterBox">
+		<div class="float-right">
+			<span class="hline">Join<img src="{{ asset("img/qpost-blue-tiny.png") }}" alt="qpost Logo"
+										 title="qpost Logo"/></span>
+
+			<form class="form-inline">
+				<input type="email" class="form-control mr-2 d-none d-md-block" id="remail" name="email"
+					   placeholder="Email"/>
+
+				<button type="submit" class="btn btn-primary ">Create Account</button>
+			</form>
+		</div>
+	</div>
 {% endblock %}
