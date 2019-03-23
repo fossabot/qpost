@@ -43,7 +43,7 @@
 
 	{% block stylesheets %}{% endblock %}
 </head>
-<body>
+<body class="{% block additionalBodyClasses %}{% endblock %}">
 {% block body %}{% endblock %}
 
 {% block javascripts %}

@@ -16,6 +16,15 @@
  */
 
 .homeBase {
+	background: url("/img/homebg.png") no-repeat bottom left;
+	height: 100%;
+	background-attachment: fixed;
+	background-size: cover;
+
+	@include media-breakpoint-up(md) {
+		background-position: right 120px;
+	}
+
 	.homeLogo {
 		@extend .my-3;
 	}
@@ -43,6 +52,10 @@
 		font-weight: bold;
 		font-size: 24px;
 		padding: 30px 45px;
+
+		@include media-breakpoint-up(md) {
+			margin-top: 140px !important;
+		}
 
 		.hline {
 			img {
