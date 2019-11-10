@@ -278,6 +278,10 @@ export default class About extends Component<any, any> {
 			{
 				name: "react-gif-player",
 				link: "https://github.com/benwiley4000/react-gif-player"
+			},
+			{
+				name: "emoji-mart",
+				link: "https://github.com/missive/emoji-mart"
 			}
 		].sort((a, b) => {
 			// sort by name, alphabetically
