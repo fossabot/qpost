@@ -114,6 +114,11 @@ class FeedEntry {
 	 */
 	private $hashtags;
 
+	/**
+	 * @ORM\OneToOne(targetEntity="qpost\Entity\Poll", mappedBy="feedEntry", cascade={"persist", "remove"})
+	 */
+	private $poll;
+
 	public function __construct() {
 		$this->children = new ArrayCollection();
 		$this->favorites = new ArrayCollection();
@@ -512,6 +517,21 @@ class FeedEntry {
 	public function removeHashtag(Hashtag $hashtag): self {
 		if ($this->hashtags->contains($hashtag)) {
 			$this->hashtags->removeElement($hashtag);
+		}
+
+		return $this;
+	}
+
+	public function getPoll(): ?Poll {
+		return $this->poll;
+	}
+
+	public function setPoll(Poll $poll): self {
+		$this->poll = $poll;
+
+		// set the owning side of the relation if necessary
+		if ($poll->getFeedEntry() !== $this) {
+			$poll->setFeedEntry($this);
 		}
 
 		return $this;
