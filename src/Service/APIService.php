@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) 2018-2019 Gigadrive - All rights reserved.
+ * Copyright (C) 2018-2020 Gigadrive - All rights reserved.
  * https://gigadrivegroup.com
  * https://qpo.st
  *
@@ -167,7 +167,7 @@ class APIService {
 			}
 		}
 
-		return $token ? $this->entityManager->getRepository(Token::class)->findOneBy(["id" => $token]) : null;
+		return $token ? $this->entityManager->getRepository(Token::class)->getTokenById($token) : null;
 	}
 
 	public function getUser(): ?User {
@@ -257,6 +257,14 @@ class APIService {
 		if (!$user) $user = $this->getUser();
 
 		if ($target instanceof FeedEntry) {
+			if ($target->getType() === FeedEntryType::SHARE) {
+				$parent = $target->getParent();
+
+				if ($parent && !$this->mayView($parent, $user)) {
+					return false;
+				}
+			}
+
 			$targetUser = $target->getUser();
 			if ($targetUser && $targetUser->getPrivacyLevel() === PrivacyLevel::PRIVATE) {
 				if ($user) {

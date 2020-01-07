@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) 2018-2019 Gigadrive - All rights reserved.
+ * Copyright (C) 2018-2020 Gigadrive - All rights reserved.
  * https://gigadrivegroup.com
  * https://qpo.st
  *
@@ -21,14 +21,13 @@
 namespace qpost\Controller\API;
 
 use DateTime;
-use Doctrine\DBAL\Types\Type;
 use Exception;
 use Gumlet\ImageResize;
-use qpost\Constants\PrivacyLevel;
 use qpost\Entity\User;
 use qpost\Service\APIService;
 use qpost\Service\DataDeletionService;
 use qpost\Service\GigadriveService;
+use qpost\Service\StorageService;
 use qpost\Util\Util;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -86,11 +85,11 @@ class UserController extends AbstractController {
 	 * @Route("/api/user", methods={"POST"})
 	 *
 	 * @param APIService $apiService
-	 * @param GigadriveService $gigadriveService
+	 * @param StorageService $storageService
 	 * @return Response|null
 	 * @throws Exception
 	 */
-	public function edit(APIService $apiService, GigadriveService $gigadriveService) {
+	public function edit(APIService $apiService, StorageService $storageService) {
 		$response = $apiService->validate(true);
 		if (!is_null($response)) return $response;
 
@@ -150,7 +149,7 @@ class UserController extends AbstractController {
 
 												$avatarFile = $image->getImageAsString();
 
-												$url = $gigadriveService->storeFileOnCDN($avatarFile);
+												$url = $storageService->uploadImage($avatarFile);
 												if (!is_null($url)) {
 													$user->setAvatar($url);
 												} else {
@@ -200,7 +199,7 @@ class UserController extends AbstractController {
 
 												$headerFile = $image->getImageAsString();
 
-												$url = $gigadriveService->storeFileOnCDN($headerFile);
+												$url = $storageService->uploadImage($headerFile);
 												if (!is_null($url)) {
 													$user->setHeader($url);
 												} else {
@@ -298,31 +297,10 @@ class UserController extends AbstractController {
 		$token = $apiService->getToken();
 		$user = $apiService->getUser();
 
-		// query is a combination of https://stackoverflow.com/a/12915720 and https://stackoverflow.com/a/24165699
 		/**
 		 * @var User[] $suggestedUsers
 		 */
-		$suggestedUsers = $apiService->getEntityManager()->getRepository(User::class)->createQueryBuilder("u")
-			->innerJoin("u.followers", "t")
-			->innerJoin("t.sender", "their_friends")
-			->innerJoin("their_friends.followers", "m")
-			->innerJoin("m.sender", "me")
-			->where("u.id != :id")
-			->setParameter("id", $user->getId(), Type::INTEGER)
-			->andWhere("u.emailActivated = :activated")
-			->setParameter("activated", true, Type::BOOLEAN)
-			->andWhere("u.privacyLevel = :public")
-			->setParameter("public", PrivacyLevel::PUBLIC, Type::STRING)
-			->andWhere("me.id = :id")
-			->setParameter("id", $user->getId(), Type::INTEGER)
-			->andWhere("their_friends.id != :id")
-			->setParameter("id", $user->getId(), Type::INTEGER)
-			->andWhere("not exists (select 1 from qpost\Entity\Follower f where f.sender = :id and f.receiver = t.receiver)")
-			->setParameter("id", $user->getId(), Type::INTEGER)
-			->groupBy("me.id, t.receiver")
-			->setMaxResults(10)
-			->getQuery()
-			->getResult();
+		$suggestedUsers = $apiService->getEntityManager()->getRepository(User::class)->getSuggestedUsers($user);
 
 		$results = [];
 		for ($i = 0; $i < count($suggestedUsers); $i++) {

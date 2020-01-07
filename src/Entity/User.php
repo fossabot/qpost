@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) 2018-2019 Gigadrive - All rights reserved.
+ * Copyright (C) 2018-2020 Gigadrive - All rights reserved.
  * https://gigadrivegroup.com
  * https://qpo.st
  *
@@ -25,7 +25,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
-use qpost\Constants\FeedEntryType;
 use qpost\Constants\PrivacyLevel;
 use qpost\Service\APIService;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -118,7 +117,7 @@ class User implements UserInterface {
 	private $lastUsernameChange;
 
 	/**
-	 * @ORM\ManyToMany(targetEntity="qpost\Entity\UserFeaturedBox", mappedBy="users")
+	 * @ORM\ManyToMany(targetEntity="qpost\Entity\UserFeaturedBox", mappedBy="users", fetch="EXTRA_LAZY")
 	 * @Serializer\Exclude()
 	 */
 	private $featuringBoxes;
@@ -136,79 +135,79 @@ class User implements UserInterface {
 	private $gigadriveData;
 
 	/**
-	 * @ORM\OneToMany(targetEntity="qpost\Entity\Token", mappedBy="user", orphanRemoval=true)
+	 * @ORM\OneToMany(targetEntity="qpost\Entity\Token", mappedBy="user", orphanRemoval=true, fetch="EXTRA_LAZY")
 	 * @Serializer\Exclude()
 	 */
 	private $tokens;
 
 	/**
-	 * @ORM\OneToMany(targetEntity="qpost\Entity\Follower", mappedBy="sender", orphanRemoval=true)
+	 * @ORM\OneToMany(targetEntity="qpost\Entity\Follower", mappedBy="sender", orphanRemoval=true, fetch="EXTRA_LAZY")
 	 * @Serializer\Exclude()
 	 */
 	private $following;
 
 	/**
-	 * @ORM\OneToMany(targetEntity="qpost\Entity\Follower", mappedBy="receiver", orphanRemoval=true)
+	 * @ORM\OneToMany(targetEntity="qpost\Entity\Follower", mappedBy="receiver", orphanRemoval=true, fetch="EXTRA_LAZY")
 	 * @Serializer\Exclude()
 	 */
 	private $followers;
 
 	/**
-	 * @ORM\OneToMany(targetEntity="qpost\Entity\FollowRequest", mappedBy="sender", orphanRemoval=true)
+	 * @ORM\OneToMany(targetEntity="qpost\Entity\FollowRequest", mappedBy="sender", orphanRemoval=true, fetch="EXTRA_LAZY")
 	 * @Serializer\Exclude()
 	 */
 	private $sentRequests;
 
 	/**
-	 * @ORM\OneToMany(targetEntity="qpost\Entity\FollowRequest", mappedBy="receiver", orphanRemoval=true)
+	 * @ORM\OneToMany(targetEntity="qpost\Entity\FollowRequest", mappedBy="receiver", orphanRemoval=true, fetch="EXTRA_LAZY")
 	 * @Serializer\Exclude()
 	 */
 	private $followRequests;
 
 	/**
-	 * @ORM\OneToMany(targetEntity="qpost\Entity\Suspension", mappedBy="target", orphanRemoval=true)
+	 * @ORM\OneToMany(targetEntity="qpost\Entity\Suspension", mappedBy="target", orphanRemoval=true, fetch="EXTRA_LAZY")
 	 * @Serializer\Exclude()
 	 */
 	private $suspensions;
 
 	/**
-	 * @ORM\OneToMany(targetEntity="qpost\Entity\Suspension", mappedBy="staff")
+	 * @ORM\OneToMany(targetEntity="qpost\Entity\Suspension", mappedBy="staff", fetch="EXTRA_LAZY")
 	 * @Serializer\Exclude()
 	 */
 	private $createdSuspensions;
 
 	/**
-	 * @ORM\OneToMany(targetEntity="qpost\Entity\FeedEntry", mappedBy="user", orphanRemoval=true)
+	 * @ORM\OneToMany(targetEntity="qpost\Entity\FeedEntry", mappedBy="user", orphanRemoval=true, fetch="EXTRA_LAZY")
 	 * @Serializer\Exclude()
 	 */
 	private $feedEntries;
 
 	/**
-	 * @ORM\OneToMany(targetEntity="qpost\Entity\Notification", mappedBy="user", orphanRemoval=true)
+	 * @ORM\OneToMany(targetEntity="qpost\Entity\Notification", mappedBy="user", orphanRemoval=true, fetch="EXTRA_LAZY")
 	 * @Serializer\Exclude()
 	 */
 	private $notifications;
 
 	/**
-	 * @ORM\OneToMany(targetEntity="qpost\Entity\Favorite", mappedBy="user", orphanRemoval=true)
+	 * @ORM\OneToMany(targetEntity="qpost\Entity\Favorite", mappedBy="user", orphanRemoval=true, fetch="EXTRA_LAZY")
 	 * @Serializer\Exclude()
 	 */
 	private $favorites;
 
 	/**
-	 * @ORM\OneToMany(targetEntity="qpost\Entity\MediaFile", mappedBy="originalUploader")
+	 * @ORM\OneToMany(targetEntity="qpost\Entity\MediaFile", mappedBy="originalUploader", fetch="EXTRA_LAZY")
 	 * @Serializer\Exclude()
 	 */
 	private $uploadedFiles;
 
 	/**
-	 * @ORM\OneToMany(targetEntity="qpost\Entity\Block", mappedBy="user", orphanRemoval=true)
+	 * @ORM\OneToMany(targetEntity="qpost\Entity\Block", mappedBy="user", orphanRemoval=true, fetch="EXTRA_LAZY")
 	 * @Serializer\Exclude()
 	 */
 	private $blocking;
 
 	/**
-	 * @ORM\OneToMany(targetEntity="qpost\Entity\Block", mappedBy="target", orphanRemoval=true)
+	 * @ORM\OneToMany(targetEntity="qpost\Entity\Block", mappedBy="target", orphanRemoval=true, fetch="EXTRA_LAZY")
 	 * @Serializer\Exclude()
 	 */
 	private $blockedBy;
@@ -219,7 +218,7 @@ class User implements UserInterface {
 	private $features = [];
 
 	/**
-	 * @ORM\OneToMany(targetEntity="qpost\Entity\PushSubscription", mappedBy="user", orphanRemoval=true)
+	 * @ORM\OneToMany(targetEntity="qpost\Entity\PushSubscription", mappedBy="user", orphanRemoval=true, fetch="EXTRA_LAZY")
 	 * @Serializer\Exclude()
 	 */
 	private $pushSubscriptions;
@@ -229,6 +228,12 @@ class User implements UserInterface {
 	 * @Serializer\Expose()
 	 */
 	private $header;
+
+	/**
+	 * @ORM\Column(type="string", length=45, nullable=true)
+	 * @Serializer\Exclude()
+	 */
+	private $creationIP;
 
 	public function __construct() {
 		$this->featuringBoxes = new ArrayCollection();
@@ -934,72 +939,14 @@ class User implements UserInterface {
 	 * @return int
 	 * @Serializer\VirtualProperty()
 	 */
-	public function getPostCount(): int {
-		$i = 0;
-
-		foreach ($this->getFeedEntries() as $feedEntry) {
-			if ($feedEntry->getType() === FeedEntryType::POST && is_null($feedEntry->getParent())) {
-				$i++;
-			}
-		}
-
-		return $i;
-	}
-
-	/**
-	 * @return int
-	 * @Serializer\VirtualProperty()
-	 */
-	public function getReplyCount(): int {
-		$i = 0;
-
-		foreach ($this->getFeedEntries() as $feedEntry) {
-			if ($feedEntry->getType() === FeedEntryType::POST && !is_null($feedEntry->getParent())) {
-				$i++;
-			}
-		}
-
-		return $i;
-	}
-
-	/**
-	 * @return int
-	 * @Serializer\VirtualProperty()
-	 */
-	public function getShareCount(): int {
-		$i = 0;
-
-		foreach ($this->getFeedEntries() as $feedEntry) {
-			if ($feedEntry->getType() === FeedEntryType::SHARE && !is_null($feedEntry->getParent())) {
-				$i++;
-			}
-		}
-
-		return $i;
-	}
-
-	/**
-	 * @return int
-	 * @Serializer\VirtualProperty()
-	 */
-	public function getFollowingPostCount(): int {
-		$i = 0;
-
-		foreach ($this->getFeedEntries() as $feedEntry) {
-			if ($feedEntry->getType() === FeedEntryType::NEW_FOLLOWING && !is_null($feedEntry->getReferencedUser())) {
-				$i++;
-			}
-		}
-
-		return $i;
-	}
-
-	/**
-	 * @return int
-	 * @Serializer\VirtualProperty()
-	 */
 	public function getTotalPostCount(): int {
-		return count($this->getFeedEntries());
+		$apiService = APIService::$instance;
+
+		if ($apiService) {
+			return $apiService->getEntityManager()->getRepository(FeedEntry::class)->getUserTotalPostCount($this);
+		}
+
+		return $this->getFeedEntries()->count();
 	}
 
 	/**
@@ -1007,7 +954,13 @@ class User implements UserInterface {
 	 * @Serializer\VirtualProperty()
 	 */
 	public function getFollowingCount(): int {
-		return count($this->getFollowing());
+		$apiService = APIService::$instance;
+
+		if ($apiService) {
+			return $apiService->getEntityManager()->getRepository(Follower::class)->getFollowingCount($this);
+		}
+
+		return $this->getFollowing()->count();
 	}
 
 	/**
@@ -1015,7 +968,13 @@ class User implements UserInterface {
 	 * @Serializer\VirtualProperty()
 	 */
 	public function getFollowerCount(): int {
-		return count($this->getFollowers());
+		$apiService = APIService::$instance;
+
+		if ($apiService) {
+			return $apiService->getEntityManager()->getRepository(Follower::class)->getFollowerCount($this);
+		}
+
+		return $this->getFollowers()->count();
 	}
 
 	/**
@@ -1023,7 +982,13 @@ class User implements UserInterface {
 	 * @Serializer\VirtualProperty()
 	 */
 	public function getFavoritesCount(): int {
-		return count($this->getFavorites());
+		$apiService = APIService::$instance;
+
+		if ($apiService) {
+			return $apiService->getEntityManager()->getRepository(Favorite::class)->getFavoriteCount($this);
+		}
+
+		return $this->getFavorites()->count();
 	}
 
 	/**
@@ -1031,7 +996,7 @@ class User implements UserInterface {
 	 * @Serializer\Exclude()
 	 */
 	public function getOpenRequestsCount(): int {
-		return count($this->getFollowRequests());
+		return $this->getFollowRequests()->count();
 	}
 
 	/**
@@ -1062,10 +1027,7 @@ class User implements UserInterface {
 		$apiService = APIService::$instance;
 
 		if (!is_null($apiService) && $apiService->isAuthorized()) {
-			return $apiService->getEntityManager()->getRepository(Block::class)->count([
-					"user" => $apiService->getUser(),
-					"target" => $this
-				]) > 0;
+			return $apiService->getEntityManager()->getRepository(Block::class)->isBlocked($apiService->getUser(), $this);
 		}
 
 		return false;
@@ -1334,6 +1296,16 @@ class User implements UserInterface {
 
 	public function setHeader(?string $header): self {
 		$this->header = $header;
+
+		return $this;
+	}
+
+	public function getCreationIP(): ?string {
+		return $this->creationIP;
+	}
+
+	public function setCreationIP(?string $creationIP): self {
+		$this->creationIP = $creationIP;
 
 		return $this;
 	}
